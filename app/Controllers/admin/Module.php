@@ -27,7 +27,10 @@ class Module extends BaseController
         $menus = new Mmenus();
 
         $mrole = new Muserrole();
-        $resutListModul = $menus->getmodule(session()->get("role"))->getResult();
+        $resutListModul = $this->menus->getmodule(session()->get("role"))->getResult();
+        //$resutListModul = $menus->asObject()->findAll();
+
+       // dd($resutListModul);
 
         $arrLstTemp = array();
         foreach ($resutListModul as $objModule) {
@@ -203,6 +206,7 @@ class Module extends BaseController
         }
 
         $mrole = new Muserrole();
+        //$resutListModul = $this->menus->asObject()->findAll();
         $resutListModul = $this->menus->getmodule(session()->get("role"))->getResult();
         $arrLstTemp = array();
 

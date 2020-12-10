@@ -141,7 +141,7 @@
                         <br>
                         <div class="card-footer">
                             <input class="btn btn-success btn-flat" type="submit" name="btnSave" value="Save" />
-                            <a class="btn btn-danger btn-flat" href="<?php echo site_url('admin/group'); ?>">Cancel</a>
+                            <a class="btn btn-danger btn-flat" href="<?php echo base_url('admin/module'); ?>">Cancel</a>
 
                         </div>
                     </form>
