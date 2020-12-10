@@ -54,7 +54,7 @@ class Auth extends BaseController
                 );
 
 
-              // dd(session()->get('role'));
+             //  dd(session()->get('role'));
 
                 $this->muser->update($user->userid, $arrdata);
 

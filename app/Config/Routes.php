@@ -44,9 +44,18 @@ $routes->get('upload', 'Admin::viewupload');
 
 $routes->group('admin', ['filter' => 'Auth'], function ($routes) {
 
-	$routes->get('/', 'Admin::index', ['filter' => 'Checkroles:admin']);
-	$routes->get('vuser', 'Admin::vuser', ['filter' => 'Checkroles:admin']);
-	$routes->get('vadduser', 'Admin::vadduser', ['filter' => 'Checkroles:admin']);
+	$routes->get('/', 'Admin::index');
+	$routes->get('vuser', 'Admin::vuser');
+	$routes->get('vadduser', 'Admin::vadduser');
+
+	$routes->get('module', 'admin/Module::index');
+
+	$routes->get('listgroup', 'admin/Module::listGroup');
+	$routes->get('delgroup', 'admin/Module::deletegroup');
+	$routes->get('editgroup', 'admin/Module::editgroup');
+
+	$routes->post('savegroup', 'admin/Module::savegroup');
+
 });
 
 

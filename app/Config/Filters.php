@@ -20,8 +20,9 @@ class Filters extends BaseConfig
 	public $globals = [
 		'before' => [
 			//'honeypot'
-			'csrf',
-			'Auth' => ['except' => ['Auth', 'Auth/login']]
+			'csrf'
+			=> ['except' => ['admin/listgroup']],
+			'Auth' => ['except' => ['Auth', 'Auth/login', 'Migrate/*']]
 		],
 		'after'  => [
 			'toolbar',

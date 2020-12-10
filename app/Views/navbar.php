@@ -5,8 +5,9 @@
          <div class="image">
 
          </div>
-         <div class="info">
-             <a href="#" class="d-block"><?= session()->get('username'); ?></a>
+         <div class="info" style="color: white;">
+             <a href="#" class="d-block" style="color: white;"><?= session()->get('username'); ?></a>
+             <p class="d-block" style="color: white;">Role - <?= session()->get('role')?></p>
          </div>
      </div>
 
@@ -15,30 +16,33 @@
          <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
              <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-             <li class="nav-item has-treeview">
-                 <a href="#" class="nav-link active">
-                     <i class="nav-icon fas fa-users"></i>
-                     <p>
-                         Management User
-                         <i class="right fas fa-angle-left"></i>
-                     </p>
-                 </a>
-                 <ul class="nav nav-treeview">
-                     <li class="nav-item">
-                         <a href="<?= base_url(); ?>/admin/vadduser" class="nav-link ">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>AddUser</p>
-                         </a>
-                     </li>
-                     <li class="nav-item">
-                         <a href="<?= base_url(); ?>/admin/vuser" class="nav-link">
-                             <i class="far fa-circle nav-icon"></i>
-                             <p>List User</p>
-                         </a>
-                     </li>
 
-                 </ul>
-             </li>
+             <?php foreach ($lstModule as $parent) { ?>
+
+                 <li class="nav-item has-treeview">
+                     <a href="#" class="nav-link active">
+                         <i class="nav-icon "></i>
+                         <p>
+                             <?= $parent['ModuleName'] ?>
+                             <i class="right fas fa-angle-left"></i>
+                         </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                         <?php foreach ($parent['Child'] as $Child) { ?>
+
+                             <li class="nav-item">
+                                 <a href="<?= base_url("/" . $Child['PermaLink']); ?>" class="nav-link ">
+                                     <i class="far fa-circle nav-icon"></i>
+                                     <p><?= $Child['ModuleName'] ?></p>
+                                 </a>
+                             </li>
+
+                         <?php } ?>
+                     </ul>
+                 </li>
+
+             <?php } ?>
+
          </ul>
      </nav>
 

@@ -15,6 +15,8 @@ class Admin extends BaseController
 		header('Access-Control-Allow-Headers:Origin, X-Requested-With, Content-Type, Accept');
 		$this->role = new Muserrole();
 		$this->muser = new Muser();
+
+		$this->themeadmin();
 	}
 	public function index()
 	{
@@ -105,7 +107,7 @@ class Admin extends BaseController
 			);
 			$arrData =  array(
 				'username' => $name,
-				'password' => $password,
+				'password' => md5($password),
 				'email'	=> $email,
 				'nomer' => $phonenumber,
 				'user_role' => $role,
@@ -120,7 +122,7 @@ class Admin extends BaseController
 		} else {
 			$arrData =  array(
 				'username' => $name,
-				'password' => $password,
+				'password' => md5($password),
 				'email'	=> $email,
 				'nomer' => $phonenumber,
 				'user_role' => $role,

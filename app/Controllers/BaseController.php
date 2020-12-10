@@ -15,6 +15,8 @@ namespace App\Controllers;
  * @package CodeIgniter
  */
 
+use App\Libraries\Treeviewdata;
+use App\Models\Mmenus;
 use CodeIgniter\Controller;
 
 class BaseController extends Controller
@@ -43,5 +45,34 @@ class BaseController extends Controller
 		// E.g.:
 		// $this->session = \Config\Services::session();
 		session();
+	}
+
+	public function themeadmin(){
+		$menus = new Mmenus();
+
+		
+		$resutListModul= $menus->getmodule(session()->get("role"))->getResult();
+
+		$arrLstTemp = array();
+		foreach ($resutListModul as $objModule) {
+
+			if (!isset($arrLstTemp[$objModule->parentid])) {
+				$arrLstTemp[$objModule->parentid] = array();
+			}
+
+			array_push($arrLstTemp[$objModule->parentid], $objModule);
+		}
+
+		$treeviewdata = new Treeviewdata();
+		$lastmodule = $treeviewdata->ArrangeModuleTreeData(0, $arrLstTemp);
+		$data = array(
+			'username' => session()->get("username"),
+			'email' => session()->get("email"),
+			'role' => session()->get("role")
+		);
+
+		$data['lstModule'] = $lastmodule;
+
+		return view('navbar', $data);
 	}
 }

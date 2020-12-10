@@ -11,7 +11,7 @@ class Auth implements FilterInterface
     public function before(RequestInterface $request, $arguments = null)
     {
         if (!session()->get('logged_in')) {
-            //dd("masuk sini");
+          //  dd("masuk sini");
             return redirect()->to(base_url('Auth'));
         }
     }

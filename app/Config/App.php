@@ -21,7 +21,8 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-	public $baseURL = 'http://localhost:8080/';
+	public $baseURL = 'http://bengkel.test:8081/';
+	//public $baseURL = BASE; //base url dinamis
 
 	/*
 	|--------------------------------------------------------------------------

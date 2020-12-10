@@ -275,8 +275,9 @@
                 alert('terjadi kesalahan pada sisi server!', 'error');
             },
             success: function(data) {
+                //console.log(data);
                 if (data.valid) {
-                    location.replace('<?= base_url('admin'); ?>');
+                   location.replace('<?= base_url('admin'); ?>');
                 } else {
                     $('#alert').empty();
                     $('#alert').html('<div class="alert alert-danger" role="alert">' + data.message + '</div>');

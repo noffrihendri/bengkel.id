@@ -13,6 +13,11 @@
 //
 defined('APP_NAMESPACE') || define('APP_NAMESPACE', 'App');
 
+
+$root = (isset($_SERVER['HTTPS']) ? "https://" : "http://") . $_SERVER['HTTP_HOST'];
+$root .= str_replace(basename($_SERVER['SCRIPT_NAME']), '', $_SERVER['SCRIPT_NAME']);
+defined('BASE') || define('BASE', $root); /// base url dinamis
+
 /*
 |--------------------------------------------------------------------------
 | Composer Path
