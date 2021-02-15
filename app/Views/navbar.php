@@ -22,7 +22,7 @@
                 $request = \Config\Services::request();
 
                 $uri = $request->uri->getPath();
-
+                //dd($uri);
                 
                 foreach ($lstModule as $parent) {
                     $menuopen = '';
