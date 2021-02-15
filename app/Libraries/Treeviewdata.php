@@ -33,6 +33,12 @@ class Treeviewdata
 
     public function fShowModuleTree($lstModule, $strStatus, $onClick, $arrAkses = array())
     {
+
+        //   echo "<pre>"; print_r($lstModule); echo "</pre>";
+        // echo "<pre>";
+        // print_r($arrAkses);
+        // echo "</pre>"; 
+        // die();
         if (count($lstModule) > 0) {
             echo "<ul>";
             foreach ($lstModule as $objModule) {
@@ -42,6 +48,7 @@ class Treeviewdata
                 if (count($arrAkses) > 0) {
                     if (in_array($objModule["ModuleId"], $arrAkses, true)) {
                         $strChecked = "Checked";
+                     //   echo "masuk";
                     }
                 }
 

@@ -266,8 +266,10 @@
     <!-- JQVMap -->
     <script src="/assets/admin-lte/plugins/jqvmap/jquery.vmap.min.js"></script>
     <script src="/assets/admin-lte/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    
     <!-- jQuery Knob Chart -->
     <script src="/assets/admin-lte/plugins/jquery-knob/jquery.knob.min.js"></script>
+    
     <!-- daterangepicker -->
     <script src="/assets/admin-lte/plugins/moment/moment.min.js"></script>
     <script src="/assets/admin-lte/plugins/daterangepicker/daterangepicker.js"></script>

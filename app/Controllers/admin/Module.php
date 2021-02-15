@@ -182,10 +182,20 @@ class Module extends BaseController
         $mrole->where('role_id',$id)
         ->get()->getResult();
 
+        // echo "<pre>";
+        // print_r($arrData);
+        // echo "</pre>";
+        // die();
+
+
         if (count($arrData['data']) > 0) {
             foreach ($arrData['data'] as $arrGroup) {
+                // echo "<pre> coba";
+                // print_r($arrGroup);
+                // echo "</pre>";
                 if ($arrGroup->role_id == $GroupId) {
                     foreach ($arrGroup as $strField => $strValue) {
+          
                         $arrData[$strField] = $strValue;
                     }
                 }
@@ -208,6 +218,12 @@ class Module extends BaseController
         $mrole = new Muserrole();
         //$resutListModul = $this->menus->asObject()->findAll();
         $resutListModul = $this->menus->getmodule(session()->get("role"))->getResult();
+
+
+        // echo "<pre>";
+        // print_r($resutListModul);
+        // echo "</pre>";
+        // die();
         $arrLstTemp = array();
 
         foreach ($resutListModul as $objModule) {

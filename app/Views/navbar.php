@@ -7,7 +7,7 @@
          </div>
          <div class="info" style="color: white;">
              <a href="#" class="d-block" style="color: white;"><?= session()->get('username'); ?></a>
-             <p class="d-block" style="color: white;">Role - <?= session()->get('role')?></p>
+             <p class="d-block" style="color: white;">Role - <?= session()->get('role') ?></p>
          </div>
      </div>
 
@@ -17,10 +17,29 @@
              <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
 
-             <?php foreach ($lstModule as $parent) { ?>
+             <?php
 
-                 <li class="nav-item has-treeview">
-                     <a href="#" class="nav-link active">
+                $request = \Config\Services::request();
+
+                $uri = $request->uri->getPath();
+
+                
+                foreach ($lstModule as $parent) {
+                    $menuopen = '';
+                    $activeparent = '';
+                    foreach ($parent['Child'] as $Child) {
+                        if($Child['PermaLink'] == $uri){
+                            $menuopen = 'menu-open';
+                            $activeparent = 'active';
+                        }
+                    }
+
+                    
+                    
+                    ?>
+
+                 <li class="nav-item has-treeview <?= $menuopen?>">
+                     <a href="#" class="nav-link <?= $activeparent?>">
                          <i class="nav-icon "></i>
                          <p>
                              <?= $parent['ModuleName'] ?>
@@ -28,11 +47,17 @@
                          </p>
                      </a>
                      <ul class="nav nav-treeview">
-                         <?php foreach ($parent['Child'] as $Child) { ?>
+                         <?php
+                            $selected = '';
+                            foreach ($parent['Child'] as $Child) {
+
+                                $selected = ($Child['PermaLink'] == $uri) ? 'active' : '';
+
+                            ?>
 
                              <li class="nav-item">
-                                 <a href="<?= base_url("/" . $Child['PermaLink']); ?>" class="nav-link ">
-                                     <i class="far fa-circle nav-icon"></i>
+                                 <a href="<?= base_url("/" . $Child['PermaLink']); ?>" class="nav-link <?= $selected ?>">
+                                     <i class="far fa-circle nav-icon  "></i>
                                      <p><?= $Child['ModuleName'] ?></p>
                                  </a>
                              </li>

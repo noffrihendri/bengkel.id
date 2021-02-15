@@ -18,6 +18,7 @@ namespace App\Controllers;
 use App\Libraries\Treeviewdata;
 use App\Models\Mmenus;
 use CodeIgniter\Controller;
+use CodeIgniter\HTTP\URI;
 
 class BaseController extends Controller
 {
@@ -49,6 +50,12 @@ class BaseController extends Controller
 
 	public function themeadmin(){
 		$menus = new Mmenus();
+
+		$uri = new URI();
+
+		// $request = \Config\Services::request();
+
+		// dd($request->uri->getSegments());
 
 		
 		$resutListModul= $menus->getmodule(session()->get("role"))->getResult();

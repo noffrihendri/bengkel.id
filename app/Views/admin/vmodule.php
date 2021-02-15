@@ -4,6 +4,8 @@
 
     $treeviewdata = new Treeviewdata();
 
+    //  dd($treeviewdata->fShowModuleTree($lstModule, "collapsed", "fClickTree", $arrAkses))
+
     ?>
 
     <?= $this->extend('tempadmin'); ?>
